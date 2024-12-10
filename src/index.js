@@ -3,23 +3,20 @@ const path = require('path');
 const url = require('url');
 
 let mainWindow;
-// let touchBarLabel;
+
 const { TouchBarLabel } = TouchBar
 
 const hidden = false;
 const DEBUG = false;
-// Function to create the main window
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     modal: true,
     frame: false,
-        
-    title: 'TerminalBar',
     width: hidden? 1 : 800,
     height: hidden? 1 : 500, 
     
     useContentSize: true,
-        // vibrancy:  'fullscreen-ui',
     transparent: true,
     webPreferences: {
       nodeIntegration: true,
@@ -29,12 +26,12 @@ function createWindow() {
   });
 
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '.', 'terminal.html'), // route from src
+    pathname: path.join(__dirname, '.', 'terminal.html'), 
     protocol: 'file:',
     slashes: true
   }));
 
-  // const touchBar = createTouchBar();
+
   mainWindow.setTouchBar(touchBar);
 
   if (DEBUG){
