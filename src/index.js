@@ -7,7 +7,7 @@ let mainWindow;
 const { TouchBarLabel } = TouchBar
 
 const hidden = false;
-const DEBUG = true;
+const DEBUG = false;
 // Function to create the main window
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -15,7 +15,6 @@ function createWindow() {
     frame: false,
         
     title: 'TerminalBar',
-    icon: path.join(__dirname, 'assets', 'logo.icns'),
     width: hidden? 1 : 800,
     height: hidden? 1 : 500, 
     
@@ -26,9 +25,6 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
-      scrollBounce: true,
-      defaultFontFamily: 'sansSerif',
-      defaultFontSize: 18,
     },
   });
 
@@ -55,7 +51,7 @@ function createWindow() {
   });
 
   mainWindow.on('resize', () => {
-    console.log(mainWindow.getSize());
+    logger(mainWindow.getSize());
   })
 }
 
@@ -63,7 +59,7 @@ const term = new TouchBarLabel({ label: '' })
 
 ipcMain.on('update-touchbar', async (event, { text }) => {
   text = text.replace(/(\r\n|\n|\r)/gm, "");
-  // console.log(text.toString());
+  // logger(text.toString());
   term.label = text;
 })
 
@@ -89,3 +85,12 @@ app.on('activate', () => {
   }
 });
 
+
+
+function logger(...args)
+{
+  if (DEBUG)
+  {
+    console.log(args);
+  }
+}
