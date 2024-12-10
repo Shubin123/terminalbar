@@ -1,0 +1,26 @@
+{
+    "name": "terminabar",
+    "main": "./src/index.js",
+    "productName": "terminalbar",
+    "version": "0.0.1",
+    "description": "xterm on the macbook TouchBar",
+    "author": "Shubin Wang (https://github.com/shubin123)",
+    "license": "LGPL-3.0-or-later",
+    "scripts": {
+      "start": "electron .",
+      "package" : "electron-packager . terminabar --platform=darwin --arch=x64 --out=./dist  --overwrite"
+    },
+    "devDependencies": {
+      "@xterm/addon-fit": "^0.10.0",
+      "@xterm/xterm": "^5.1.0",
+      "electron-packager": "^17.1.2",
+      "electron": "^33.0.2"
+    },
+    "dependencies": {
+      "electron": "^33.0.2",
+      "node-pty": "^1.0.0",
+      "@xterm/addon-fit": "^0.10.0",
+      "@xterm/xterm": "^5.1.0"
+    }
+  }
+  
